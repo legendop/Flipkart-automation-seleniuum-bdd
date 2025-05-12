@@ -14,3 +14,10 @@ Clicks buy now
 
 Clicks on card options
 Enters fake card details and clicks payment
+
+
+To run: In the folder FLIPKART_AUTOMATION_BDD
+
+1.run pip install -r requirements.txt
+
+2.run behave

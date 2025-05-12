@@ -18,6 +18,14 @@ Enters fake card details and clicks payment
 
 To run: In the folder FLIPKART_AUTOMATION_BDD
 
+Create a .env file in FLIPKART_AUTOMATION_BDD and fill in correct details
+
+PHONE_NUMBER=1234567890
+CARD_NUMBER=123123123123
+CARD_EXPIRY=10/32
+CARD_CVV=111
+
+
 1.run pip install -r requirements.txt
 
 2.run behave

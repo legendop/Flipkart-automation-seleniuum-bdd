@@ -1,10 +1,25 @@
 from behave import given, when, then
+
+from dotenv import load_dotenv
+from pathlib import Path
+import os
 from pages.login_page import LoginPage
 from pages.search_page import SearchPage
 from pages.product_page import ProductPage
 from pages.checkout_page import CheckoutPage
 from utils.driver_setup import init_driver
 import time
+
+# Load the .env file from the root directory
+env_path = Path(__file__).resolve().parents[2] / '.env'
+load_dotenv(dotenv_path=env_path)
+
+# Now safely get environment variables
+PHONE_NUMBER = os.getenv("PHONE_NUMBER")
+CARD_NUMBER = os.getenv("CARD_NUMBER")
+CARD_EXPIRY = os.getenv("CARD_EXPIRY")
+CARD_CVV = os.getenv("CARD_CVV")
+
 
 @given('the user opens the Flipkart website')
 def step_open_flipkart(context):
@@ -14,7 +29,8 @@ def step_open_flipkart(context):
 
 @when('the user logs in with the phone number')
 def step_login(context):
-    context.login.login("9933212411")
+
+    context.login.login(PHONE_NUMBER)
 
 @when('the user searches for "{query}"')
 def step_search_product(context, query):
@@ -41,6 +57,7 @@ def step_proceed_payment(context):
 
 @then('the user enters card details and completes payment')
 def step_enter_payment(context):
-    context.checkout.enter_card_details("123456781234", "02/33", "123")
+    
+    context.checkout.enter_card_details(CARD_NUMBER, CARD_EXPIRY, CARD_CVV)
     time.sleep(5)
     context.driver.quit()

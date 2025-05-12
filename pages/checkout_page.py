@@ -25,3 +25,4 @@ class CheckoutPage:
         self.driver.find_element(By.XPATH, "//*[@id='cards']/div/div[2]/div[1]/input").send_keys(expiry)
         self.driver.find_element(By.ID, "cvv-input").send_keys(cvv)
         self.driver.find_element(By.XPATH, "//*[@id='cards']/div/button").click()
+        time.sleep(5)

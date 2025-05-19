@@ -7,7 +7,7 @@ import time
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 20)
+        self.wait = WebDriverWait(driver, 5)
 
     def open_site(self):
         self.driver.get("https://www.flipkart.com")
@@ -21,4 +21,4 @@ class LoginPage:
         phone_input.send_keys(phone_number + Keys.ENTER)
 
         print("Waiting for OTP...")
-        time.sleep(20)  # Manual OTP entry
+        time.sleep(15)  # Manual OTP entry

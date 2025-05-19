@@ -19,10 +19,16 @@ class CheckoutPage:
         time.sleep(5)
 
     def enter_card_details(self, number, expiry, cvv):
-        self.driver.find_element(By.XPATH, "//*[@id='container']/div[2]/div/section[1]/div/div/div/section/div/div[3]/div[1]/div").click()
+        self.driver.find_element(By.XPATH, "//*[@id='container']/div[2]/div/section[1]/div/div/div/section[1]/div/div[3]/div[1]/div").click()
+        time.sleep(1)                    
         card_input = self.wait.until(EC.element_to_be_clickable((By.ID, "cc-input")))
         card_input.send_keys(number)
         self.driver.find_element(By.XPATH, "//*[@id='cards']/div/div[2]/div[1]/input").send_keys(expiry)
         self.driver.find_element(By.ID, "cvv-input").send_keys(cvv)
         self.driver.find_element(By.XPATH, "//*[@id='cards']/div/button").click()
         time.sleep(5)
+        print("Payment clicked")
+        dont_save_card = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='container']/div[4]/div/div/div/div/button[2]")))
+        dont_save_card.click()
+        time.sleep(10)
+        print("Completed")

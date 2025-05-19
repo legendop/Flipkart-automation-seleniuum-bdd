@@ -7,7 +7,7 @@ import time
 class SearchPage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 2)
 
     def search_product(self, query):
         search_input = self.wait.until(EC.element_to_be_clickable((By.XPATH, '//input[@type="text" and @title="Search for Products, Brands and More"]')))
